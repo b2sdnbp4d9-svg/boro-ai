@@ -83,7 +83,9 @@ export default function Home() {
               </p>
             </Link>
 
-            <button className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
+            <Link 
+              href="/colors"
+              className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
               <div className="mb-3 text-3xl">🎨</div>
               <h4 className="mb-2 text-lg font-semibold">
                 Glass Colors
@@ -92,7 +94,7 @@ export default function Home() {
                 Explore colors, compatibility, striking colors,
                 and manufacturers.
               </p>
-            </button>
+            </Link>
 
             <button className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
               <div className="mb-3 text-3xl">🔧</div>
