@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
@@ -69,7 +71,9 @@ export default function Home() {
               </p>
             </button>
 
-            <button className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
+            <Link
+              href="/techniques" 
+              className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
               <div className="mb-3 text-3xl">🔥</div>
               <h4 className="mb-2 text-lg font-semibold">
                 Glassblowing Techniques
@@ -77,7 +81,7 @@ export default function Home() {
               <p className="text-sm text-zinc-400">
                 Learn techniques, terminology, and construction methods.
               </p>
-            </button>
+            </Link>
 
             <button className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
               <div className="mb-3 text-3xl">🎨</div>
