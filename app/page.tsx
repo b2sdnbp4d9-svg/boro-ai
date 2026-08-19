@@ -96,7 +96,9 @@ export default function Home() {
               </p>
             </Link>
 
-            <button className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
+            <Link 
+              href="/tools"
+              className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
               <div className="mb-3 text-3xl">🔧</div>
               <h4 className="mb-2 text-lg font-semibold">
                 Tools & Materials
@@ -105,7 +107,7 @@ export default function Home() {
                 Find tools and materials and eventually compare
                 prices from different suppliers.
               </p>
-            </button>
+            </Link>
 
           </div>
         </section>
