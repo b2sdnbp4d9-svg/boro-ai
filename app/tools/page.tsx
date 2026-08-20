@@ -1,5 +1,5 @@
 import ToolCard from "@/components/ToolCard";
-
+import { tools } from "@/data/tools";
 export default function Tools() {
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
@@ -13,20 +13,13 @@ export default function Tools() {
         </p>
       
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
-         <ToolCard
-           name="Bench Torch"
-           description="A torch used for heating and shaping borosilicate glass."
+         {tools.map((tool) => (
+  <ToolCard
+    key={tool.name}
+    name={tool.name}
+    description={tool.description}
   />
-
-        <ToolCard
-           name="Tweezers"
-           description="Precision hand tools used for manipulating hot glass."
-  />
-
-        <ToolCard
-           name="Graphite Paddle"
-           description="A graphite tool used to shape and flatten hot glass."
-  />
+))}
 
 </div>
 </div>
