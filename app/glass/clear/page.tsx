@@ -82,21 +82,23 @@ const filteredManufacturers = clearManufacturers.filter((manufacturer) => {
 )}
 
         {/* Manufacturers */}
-        <section className="mt-12">
-          <h2 className="text-2xl font-semibold">
-            Browse by Manufacturer
-          </h2>
+{!searchTerm && (
+  <section className="mt-12">
+    <h2 className="text-2xl font-semibold">
+      Browse by Manufacturer
+    </h2>
 
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            {clearManufacturers.map((manufacturer) => (
-              <ClearManufacturerCard
-                key={manufacturer.name}
-                name={manufacturer.name}
-                description={manufacturer.description}
-              />
-            ))}
-          </div>
-        </section>
+    <div className="mt-6 grid gap-6 sm:grid-cols-2">
+      {clearManufacturers.map((manufacturer) => (
+        <ClearManufacturerCard
+          key={manufacturer.name}
+          name={manufacturer.name}
+          description={manufacturer.description}
+        />
+      ))}
+    </div>
+  </section>
+)}
 
       </div>
     </main>
