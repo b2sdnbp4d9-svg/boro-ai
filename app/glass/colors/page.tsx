@@ -104,6 +104,7 @@ const filteredColors = colors.filter((color) => {
                 key={manufacturer.name}
                 name={manufacturer.name}
                 description={manufacturer.description}
+                logo={manufacturer.logo}
               />
             ))}
           </div>
