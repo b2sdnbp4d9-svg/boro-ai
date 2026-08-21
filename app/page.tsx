@@ -83,18 +83,21 @@ export default function Home() {
               </p>
             </Link>
 
-            <Link 
-              href="/colors"
-              className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left">
-              <div className="mb-3 text-3xl">🎨</div>
-              <h4 className="mb-2 text-lg font-semibold">
-                Glass Colors
-              </h4>
-              <p className="text-sm text-zinc-400">
-                Explore colors, compatibility, striking colors,
-                and manufacturers.
-              </p>
-            </Link>
+            <Link
+  href="/glass"
+  className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 text-left"
+>
+  <div className="mb-3 text-3xl">🧪</div>
+
+  <h4 className="mb-2 text-lg font-semibold">
+    Glass
+  </h4>
+
+  <p className="text-sm text-zinc-400">
+    Explore glass colors, clear glass, manufacturers,
+    and glass products.
+  </p>
+</Link>
 
             <Link 
               href="/tools-materials"
