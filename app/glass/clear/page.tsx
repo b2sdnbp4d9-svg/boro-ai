@@ -1,7 +1,22 @@
+"use client";
+
+import { useState } from "react";
+import SearchBar from "@/components/SearchBar";
 import ClearManufacturerCard from "@/components/ClearManufacturerCard";
 import { clearManufacturers } from "@/data/clearManufacturers";
 
 export default function ClearGlass() {
+  const [searchTerm, setSearchTerm] = useState("");
+
+const filteredManufacturers = clearManufacturers.filter((manufacturer) => {
+  const search = searchTerm.toLowerCase();
+
+  return (
+    manufacturer.name.toLowerCase().includes(search) ||
+    manufacturer.description.toLowerCase().includes(search)
+  );
+});
+
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
       <div className="mx-auto max-w-5xl px-6 py-10">
@@ -16,13 +31,13 @@ export default function ClearGlass() {
         </p>
 
         {/* Search */}
-        <div className="mt-8">
-          <input
-            type="text"
-            placeholder="Search clear glass or manufacturers..."
-            className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 outline-none"
-          />
-        </div>
+<div className="mt-8">
+  <SearchBar
+    value={searchTerm}
+    onChange={setSearchTerm}
+    placeholder="Search clear glass or manufacturers..."
+  />
+</div>
 
         {/* Featured */}
         <section className="mt-12">
@@ -40,6 +55,31 @@ export default function ClearGlass() {
             </p>
           </div>
         </section>
+
+{/* Search Results */}
+{searchTerm && (
+  <section className="mt-12">
+    <h2 className="text-2xl font-semibold">
+      Search Results
+    </h2>
+
+    {filteredManufacturers.length === 0 ? (
+      <p className="mt-4 text-zinc-400">
+        No clear glass manufacturers found.
+      </p>
+    ) : (
+      <div className="mt-6 grid gap-6 sm:grid-cols-2">
+        {filteredManufacturers.map((manufacturer) => (
+          <ClearManufacturerCard
+            key={manufacturer.name}
+            name={manufacturer.name}
+            description={manufacturer.description}
+          />
+        ))}
+      </div>
+    )}
+  </section>
+)}
 
         {/* Manufacturers */}
         <section className="mt-12">
