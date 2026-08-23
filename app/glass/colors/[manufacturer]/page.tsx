@@ -2,6 +2,7 @@
 
 import { use, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 import { colors } from "@/data/colors";
 import { manufacturers } from "@/data/manufacturers";
@@ -16,12 +17,14 @@ export default function ManufacturerPage({
   params,
 }: ManufacturerPageProps) {
   const { manufacturer } = use(params);
-const manufacturerData = manufacturers.find(
-  (item) =>
-    item.name.toLowerCase().replace(/\s+/g, "-") === manufacturer.toLowerCase()
-);
 
-const manufacturerName = manufacturer
+  const manufacturerData = manufacturers.find(
+    (item) =>
+      item.name.toLowerCase().replace(/\s+/g, "-") ===
+      manufacturer.toLowerCase()
+  );
+
+  const manufacturerName = manufacturer
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
@@ -45,19 +48,20 @@ const manufacturerName = manufacturer
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
       <div className="mx-auto max-w-5xl px-6 py-10">
-  {manufacturerData && (
-    <div className="mb-6 flex justify-center">
-      <Image
-        src={manufacturerData.logo}
-        alt={`${manufacturerData.name} logo`}
-        width={240}
-        height={120}
-        className="max-h-28 w-auto object-contain"
-      />
-    </div>
-  )}
 
-  <h1 className="text-4xl font-bold">
+        {manufacturerData && (
+          <div className="mb-6 flex justify-center">
+            <Image
+              src={manufacturerData.logo}
+              alt={`${manufacturerData.name} logo`}
+              width={240}
+              height={120}
+              className="max-h-28 w-auto object-contain"
+            />
+          </div>
+        )}
+
+        <h1 className="text-4xl font-bold">
           {manufacturerName}
         </h1>
 
@@ -85,9 +89,12 @@ const manufacturerName = manufacturer
           ) : (
             <div className="mt-6 grid gap-6 sm:grid-cols-2">
               {filteredColors.map((color) => (
-                <div
+                <Link
                   key={color.name}
-                  className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6"
+                  href={`/glass/colors/${manufacturer}/${color.name
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`}
+                  className="block rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition hover:border-zinc-600"
                 >
                   <h3 className="text-xl font-semibold">
                     {color.name}
@@ -100,11 +107,12 @@ const manufacturerName = manufacturer
                   <p className="mt-4 text-sm text-zinc-500">
                     {color.compatibility}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           )}
         </section>
+
       </div>
     </main>
   );
