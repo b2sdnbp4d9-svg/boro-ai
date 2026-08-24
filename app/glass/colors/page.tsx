@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import SearchBar from "@/components/SearchBar";
 import ManufacturerCard from "@/components/ManufacturerCard";
 import { manufacturers } from "@/data/manufacturers";
@@ -70,9 +71,14 @@ const filteredColors = colors.filter((color) => {
     ) : (
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
         {filteredColors.map((color) => (
-          <div
-            key={color.name}
-            className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6"
+          <Link
+            key={`${color.manufacturer}-${color.name}`}
+            href={`/glass/colors/${color.manufacturer
+              .toLowerCase()
+              .replace(/\s+/g, "-")}/${color.name
+              .toLowerCase()
+              .replace(/\s+/g, "-")}`}
+            className="block rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition hover:border-zinc-600"
           >
             <h3 className="text-xl font-semibold">
               {color.name}
@@ -85,7 +91,7 @@ const filteredColors = colors.filter((color) => {
             <p className="mt-4 text-sm text-zinc-400">
               {color.description}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     )}
