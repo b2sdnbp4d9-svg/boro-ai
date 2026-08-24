@@ -1,6 +1,7 @@
 "use client";
 
 import { use } from "react";
+import Image from "next/image";
 import { colors } from "@/data/colors";
 
 type ColorPageProps = {
@@ -49,6 +50,16 @@ export default function ColorPage({ params }: ColorPageProps) {
         <p className="text-sm text-zinc-500">
           {colorData.manufacturer}
         </p>
+        
+        <div className="mt-6 flex justify-center">
+  <Image
+    src={colorData.image}
+    alt={`${colorData.name} glass color`}
+    width={400}
+    height={300}
+    className="max-h-72 w-auto rounded-2xl object-contain"
+  />
+</div>
 
         <h1 className="mt-2 text-4xl font-bold">
           {colorData.name}

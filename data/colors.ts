@@ -2,6 +2,7 @@ export const colors = [
   {
     name: "Ruby Red",
     manufacturer: "Northstar",
+    image: "/colors/northstar/ruby-red.png",
     description:
       "A striking red borosilicate color with unique working characteristics.",
     compatibility: "COE 33 borosilicate",
@@ -15,6 +16,7 @@ export const colors = [
   {
     name: "Cobalt Blue",
     manufacturer: "Glass Alchemy",
+    image: "/colors/glass-alchemy/cobalt-blue.png",
     description:
       "A deep blue borosilicate color commonly used for accents and decoration.",
     compatibility: "COE 33 borosilicate",
@@ -28,6 +30,7 @@ export const colors = [
   {
     name: "Amber",
     manufacturer: "Trautman Art Glass",
+    image: "/colors/trautman-art-glass/amber.png",
     description:
       "A warm amber color that can produce different results depending on flame conditions.",
     compatibility: "COE 33 borosilicate",
