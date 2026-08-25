@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 import Image from "next/image";
 import { colors } from "@/data/colors";
 
@@ -13,6 +13,8 @@ type ColorPageProps = {
 
 export default function ColorPage({ params }: ColorPageProps) {
   const { manufacturer, color } = use(params);
+
+  const [selectedImage, setSelectedImage] = useState(0);
 
   const manufacturerName = manufacturer
     .split("-")
@@ -51,17 +53,39 @@ export default function ColorPage({ params }: ColorPageProps) {
           {colorData.manufacturer}
         </p>
         
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
-  {colorData.images.map((image, index) => (
+        <div className="mt-6">
+  <div className="flex justify-center rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
     <Image
-      key={image}
-      src={image}
-      alt={`${colorData.name} glass color ${index + 1}`}
-      width={400}
-      height={300}
-      className="h-48 w-full rounded-2xl object-contain"
+      src={colorData.images[selectedImage]}
+      alt={`${colorData.name} glass color ${selectedImage + 1}`}
+      width={600}
+      height={450}
+      className="h-96 w-full object-contain"
     />
-  ))}
+  </div>
+
+  <div className="mt-4 grid grid-cols-3 gap-4">
+    {colorData.images.map((image, index) => (
+      <button
+        key={image}
+        type="button"
+        onClick={() => setSelectedImage(index)}
+        className={`rounded-xl border p-2 transition ${
+          selectedImage === index
+            ? "border-white"
+            : "border-zinc-800 hover:border-zinc-600"
+        }`}
+      >
+        <Image
+          src={image}
+          alt={`${colorData.name} thumbnail ${index + 1}`}
+          width={200}
+          height={150}
+          className="h-24 w-full object-contain"
+        />
+      </button>
+    ))}
+  </div>
 </div>
 
         <h1 className="mt-2 text-4xl font-bold">

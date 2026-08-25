@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import SearchBar from "@/components/SearchBar";
 import ManufacturerCard from "@/components/ManufacturerCard";
 import { manufacturers } from "@/data/manufacturers";
@@ -80,9 +81,20 @@ const filteredColors = colors.filter((color) => {
               .replace(/\s+/g, "-")}`}
             className="block rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition hover:border-zinc-600"
           >
-            <h3 className="text-xl font-semibold">
-              {color.name}
-            </h3>
+            
+  <div className="mb-4 flex justify-center">
+    <Image
+      src={color.images[0]}
+      alt={`${color.name} glass color`}
+      width={300}
+      height={200}
+      className="h-40 w-full object-contain"
+    />
+  </div>
+
+  <h3 className="text-xl font-semibold">
+    {color.name}
+  </h3>
 
             <p className="mt-2 text-sm text-zinc-400">
               {color.manufacturer}
