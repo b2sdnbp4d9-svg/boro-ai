@@ -51,14 +51,17 @@ export default function ColorPage({ params }: ColorPageProps) {
           {colorData.manufacturer}
         </p>
         
-        <div className="mt-6 flex justify-center">
-  <Image
-    src={colorData.image}
-    alt={`${colorData.name} glass color`}
-    width={400}
-    height={300}
-    className="max-h-72 w-auto rounded-2xl object-contain"
-  />
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+  {colorData.images.map((image, index) => (
+    <Image
+      key={image}
+      src={image}
+      alt={`${colorData.name} glass color ${index + 1}`}
+      width={400}
+      height={300}
+      className="h-48 w-full rounded-2xl object-contain"
+    />
+  ))}
 </div>
 
         <h1 className="mt-2 text-4xl font-bold">
