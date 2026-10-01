@@ -7,11 +7,27 @@ import SearchBar from "@/components/SearchBar";
 import ManufacturerCard from "@/components/ManufacturerCard";
 import { manufacturers } from "@/data/manufacturers";
 import { colors } from "@/data/colors";
+import { promotions } from "@/data/promotions";
+import {
+  getActivePromotions,
+  filterPromotionItems,
+} from "@/lib/promotion";
 
 export default function Colors() {
   const [searchTerm, setSearchTerm] = useState("");
+  
+  const activePromotions = getActivePromotions(promotions);
+
+const colorPromotion = activePromotions.find(
+  (promotion) => promotion.contentType === "colors"
+);
+
+const promotedColors = colorPromotion
+  ? filterPromotionItems(colors, colorPromotion)
+  : colors;
+
 const filteredColors = colors.filter((color) => {
-  const search = searchTerm.toLowerCase();
+   const search = searchTerm.toLowerCase();
 
   return (
     color.name.toLowerCase().includes(search) ||
@@ -48,7 +64,7 @@ const filteredColors = colors.filter((color) => {
   </h2>
 
   <div className="mt-6 grid gap-6 sm:grid-cols-2">
-    {colors.filter((color) => color.featured).map((color) => (
+    {(colorPromotion ? promotedColors : colors.filter((color) => color.featured)).map((color) => (
       <Link
         key={`${color.manufacturer}-${color.name}`}
         href={`/glass/colors/${color.manufacturer
