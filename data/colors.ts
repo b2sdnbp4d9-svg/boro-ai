@@ -1,7 +1,9 @@
 export const colors = [
   {
     name: "Ruby Red",
-    manufacturer: "Northstar",
+manufacturer: "Northstar",
+featured: false,
+    
     images: [
   "/colors/northstar/ruby-red/ruby-red-1.png",
   "/colors/northstar/ruby-red/ruby-red-2.png",
@@ -20,6 +22,7 @@ export const colors = [
   {
     name: "Cobalt Blue",
     manufacturer: "Glass Alchemy",
+    featured: true,
     images: [
   "/colors/glass-alchemy/cobalt-blue/cobalt-blue-1.png",
   "/colors/glass-alchemy/cobalt-blue/cobalt-blue-2.png",
@@ -38,6 +41,7 @@ export const colors = [
   {
     name: "Amber",
     manufacturer: "Trautman Art Glass",
+     featured: false,
     images: [
   "/colors/trautman-art-glass/amber/amber-1.png",
   "/colors/trautman-art-glass/amber/amber-2.png",

@@ -41,22 +41,48 @@ const filteredColors = colors.filter((color) => {
   />
 </div>
 
-        {/* Featured */}
-        <section className="mt-12">
-          <h2 className="text-2xl font-semibold">
-            Featured & New
-          </h2>
+       {/* Featured */}
+<section className="mt-12">
+  <h2 className="text-2xl font-semibold">
+    Featured & New
+  </h2>
 
-          <div className="mt-6 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-            <h3 className="text-xl font-semibold">
-              Featured Color
-            </h3>
+  <div className="mt-6 grid gap-6 sm:grid-cols-2">
+    {colors.filter((color) => color.featured).map((color) => (
+      <Link
+        key={`${color.manufacturer}-${color.name}`}
+        href={`/glass/colors/${color.manufacturer
+          .toLowerCase()
+          .replace(/\s+/g, "-")}/${color.name
+          .toLowerCase()
+          .replace(/\s+/g, "-")}`}
+        className="block rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition hover:border-zinc-600"
+      >
+        <div className="mb-4 flex justify-center">
+          <Image
+            src={color.images[0]}
+            alt={`${color.name} glass color`}
+            width={300}
+            height={200}
+            className="h-40 w-full object-contain"
+          />
+        </div>
 
-            <p className="mt-2 text-sm text-zinc-400">
-              New and featured glass colors will appear here.
-            </p>
-          </div>
-        </section>
+        <h3 className="text-xl font-semibold">
+          {color.name}
+        </h3>
+
+        <p className="mt-2 text-sm text-zinc-400">
+          {color.manufacturer}
+        </p>
+
+        <p className="mt-4 text-sm text-zinc-400">
+          {color.description}
+        </p>
+      </Link>
+    ))}
+  </div>
+</section>
 
 {/* Search Results */}
 {searchTerm && (
