@@ -11,6 +11,7 @@ import { promotions } from "@/data/promotions";
 import {
   getActivePromotions,
   filterPromotionItems,
+  getDailyIndex,
 } from "@/lib/promotion";
 
 export default function Colors() {
@@ -24,7 +25,12 @@ const colorPromotion = activePromotions.find(
 
 const promotedColors = colorPromotion
   ? filterPromotionItems(colors, colorPromotion)
-  : colors;
+  : [];
+
+const dailyPromotedColor =
+  promotedColors.length > 0
+    ? promotedColors[getDailyIndex(promotedColors.length)]
+    : null;
 
 const filteredColors = colors.filter((color) => {
    const search = searchTerm.toLowerCase();
@@ -64,7 +70,10 @@ const filteredColors = colors.filter((color) => {
   </h2>
 
   <div className="mt-6 grid gap-6 sm:grid-cols-2">
-    {(colorPromotion ? promotedColors : colors.filter((color) => color.featured)).map((color) => (
+    {(dailyPromotedColor
+  ? [dailyPromotedColor]
+  : colors.filter((color) => color.featured)
+).map((color) => (
       <Link
         key={`${color.manufacturer}-${color.name}`}
         href={`/glass/colors/${color.manufacturer
